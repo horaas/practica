@@ -2,9 +2,8 @@
 <h1>{{title}} {{valor1+valor2}}</h1>
 <app-list (namber1)="valor1 = $event" ></app-list>
 <app-list2 (namber2)="valor2 =  $event" ></app-list2>
-
 <ul>
   <li *ngFor="let post of posts">
-    <app-tarea2 [title]="post.title"></app-tarea2>
+    <app-tarea2 (removePost)="onRemovePost($event)" [post]="post"></app-tarea2>
   </li>
 </ul>
