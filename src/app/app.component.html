@@ -1,15 +1,15 @@
-<input type="text" (keyup.enter)="addNewTask($event.target.value)">
-
+ <button (click)="selectAlltasks()">Select All</button><input type="text" (keyup.enter)="addNewTask($event.target.value)">
+<div class="margin"></div>
 <div *ngFor="let task of tasks,let i=index">
     <div *ngIf="valor === 'default', else filter">
-      <input type="checkbox" (change)="selectTask($event.target.checked, i)">
+      <input type="checkbox" (change)="selectTask($event.target.checked, i)" [checked]="task.state==='complete'">
       {{task.task}} 
       <button (click)="removeTask(task.task)">x</button>
     </div>
 
     <ng-template  #filter>
       <div *ngIf="valor === task.state">
-          <input type="checkbox" (change)="selectTask($event.target.checked, i)">
+          <input type="checkbox" (change)="selectTask($event.target.checked, i)" [checked]="valor ==='complete'">
           {{task.task}} 
           <button (click)="removeTask(task.task)">x</button>
       </div>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="margin">
-  <button (click)="valor = 'default'">all</button>
+  <button (click)="valor = 'default'">All</button>
   <button (click)="valor = 'progress'">Active</button>
   <button (click)="valor = 'complete'">Completed</button>
   <button (click)="removeTaskCompleted()">Clear Completed</button>
