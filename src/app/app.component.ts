@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Modelo } from './modelo';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,59 @@ export class AppComponent {
  public title:string = "Total: ";
  public valor1: number = 0;
  public valor2: number = 0;
+ public tasks: Modelo[];
+ public newTask: Modelo;
+ public valor: any= 'default';
 
+ constructor() {
+   this.tasks = [
+     {
+    task:'tarea1',
+    state: 'progress'
+     },
+     {
+    task:'tarea2',
+    state: 'progress'
+     },
+     {
+    task:'tarea3',
+    state: 'progress'
+     },
+     {
+    task:'tarea4',
+    state: 'progress'
+     },
+   ];
+ }
+
+  removeTask(event) {
+    console.log(event);
+    this.tasks = this.tasks.filter(value => value.task !== event);
+  }
+ 
+  addNewTask(event) {
+    if(event){
+      this.newTask = {
+        task:event,
+        state: 'progress'
+      }
+
+      this.tasks.push(this.newTask);
+    }
+  }
+
+  selectTask(event, index) {
+    if(event) {
+      this.tasks[index].state = "complete";
+    } else {
+      this.tasks[index].state = "progress";
+    }
+  }
+
+  removeTaskCompleted() {
+    console.log(this.tasks);
+    this.tasks = this.tasks.filter(value => value.state === 'progress');
+  }
  public posts:any[] = [
     {
     "userId": 1,
@@ -47,5 +100,6 @@ export class AppComponent {
     "title": "dolorem eum magni eos aperiam quia",
     "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae"
   }
- ]
+ ];
+
 }

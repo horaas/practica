@@ -1,5 +1,53 @@
+<input type="text" (keyup.enter)="addNewTask($event.target.value)">
 
-<h1>{{title}} {{valor1+valor2}}</h1>
+<div *ngFor="let task of tasks,let i=index">
+    <div *ngIf="valor === 'default', else filter">
+      <input type="checkbox" (change)="selectTask($event.target.checked, i)">
+      {{task.task}} 
+      <button (click)="removeTask(task.task)">x</button>
+    </div>
+
+    <ng-template  #filter>
+      <div *ngIf="valor === task.state">
+          <input type="checkbox" (change)="selectTask($event.target.checked, i)">
+          {{task.task}} 
+          <button (click)="removeTask(task.task)">x</button>
+      </div>
+    </ng-template>
+</div>
+
+<div class="margin">
+  <button (click)="valor = 'default'">all</button>
+  <button (click)="valor = 'progress'">Active</button>
+  <button (click)="valor = 'complete'">Completed</button>
+  <button (click)="removeTaskCompleted()">Clear Completed</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>{{title}} {{valor1+valor2}}</h1>
 <app-list (namber1)="valor1 = $event" ></app-list>
 <app-list2 (namber2)="valor2 =  $event" ></app-list2>
 
@@ -8,3 +56,10 @@
     <app-tarea2 [title]="post.title"></app-tarea2>
   </li>
 </ul>
+
+<br>
+<br>
+<br>
+<br>
+
+ -->
