@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { POSTS } from './mock';
+import { YesornotService } from './yesornot.service';
 
 @Component({
   selector: 'app-root',
@@ -7,16 +7,13 @@ import { POSTS } from './mock';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title:string = "Total: ";
-  public valor1: number = 0;
-  public valor2: number = 0;
-
-  public posts:PostInterface[];
-
-  constructor() {
-    this.posts = POSTS;
+ public response$;
+  constructor(private yesOrNot: YesornotService) {
   }
-  onRemovePost({id}) {
-    this.posts = this.posts.filter(post => post.id !== id);
+
+  prueba() {
+    //const valorResponse = (response) => this.response = response;
+    this.response$ = this.yesOrNot.callServiceCallYesOrNot();
+    console.dir(this.response$);
   }
 }

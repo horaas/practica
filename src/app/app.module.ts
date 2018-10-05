@@ -1,26 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
-import { List2Component } from './list2/list2.component';
-import { Tarea2Component } from './tarea2/tarea2.component';
-import { EliminatelistComponent } from './eliminatelist/eliminatelist.component';
-import { HightlightDirective } from './hightlight.directive';
+import { YesornotService } from './yesornot.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ListComponent,
-    List2Component,
-    Tarea2Component,
-    EliminatelistComponent,
-    HightlightDirective
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [YesornotService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
