@@ -1,4 +1,5 @@
- <button (click)="selectAlltasks()">Select All</button><input type="text" (keyup.enter)="addNewTask($event.target.value)">
+<button (click)="selectAlltasks()">Select All</button>
+<input type="text" (keyup.enter)="addNewTask($event)">
 <div class="margin"></div>
 <div *ngFor="let task of tasks,let i=index">
     <div *ngIf="valor === 'default', else filter">

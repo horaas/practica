@@ -7,9 +7,7 @@ import { Modelo } from './modelo';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
- public title:string = "Total: ";
- public valor1: number = 0;
- public valor2: number = 0;
+ public title: string = 'Total: ';
  public tasks: Modelo[];
  public newTask: Modelo;
  public valor: any = 'default';
@@ -18,19 +16,19 @@ export class AppComponent {
  constructor() {
    this.tasks = [
      {
-    task:'tarea1',
+    task: 'tarea1',
     state: 'progress'
      },
      {
-    task:'tarea2',
+    task: 'tarea2',
     state: 'progress'
      },
      {
-    task:'tarea3',
+    task: 'tarea3',
     state: 'progress'
      },
      {
-    task:'tarea4',
+    task: 'tarea4',
     state: 'progress'
      },
    ];
@@ -39,23 +37,24 @@ export class AppComponent {
   removeTask(event) {
     this.tasks = this.tasks.filter(value => value.task !== event);
   }
- 
+
   addNewTask(event) {
-    if(event){
+    if (event.target.value) {
       this.newTask = {
-        task:event,
+        task: event.target.value,
         state: 'progress'
-      }
+      };
 
       this.tasks.push(this.newTask);
+      event.target.value = '';
     }
   }
 
   selectTask(event, index) {
-    if(event) {
-      this.tasks[index].state = "complete";
+    if (event) {
+      this.tasks[index].state = 'complete';
     } else {
-      this.tasks[index].state = "progress";
+      this.tasks[index].state = 'progress';
     }
   }
 
@@ -64,19 +63,18 @@ export class AppComponent {
     this.tasks = this.tasks.filter(value => value.state === 'progress');
   }
 
-  selectAlltasks(){
-    if(this.selectAll)
-    {
+  selectAlltasks() {
+    if (this.selectAll) {
 
-      this.tasks.map(task =>{
-        task.state = "complete";
+      this.tasks.map(task => {
+        task.state = 'complete';
       });
 
       this.selectAll = false;
     } else {
 
-      this.tasks.map(task =>{
-        task.state = "progress";
+      this.tasks.map(task => {
+        task.state = 'progress';
       });
 
       this.selectAll = true;
