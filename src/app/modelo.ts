@@ -1,4 +1,4 @@
 export interface Modelo {
-    task:string;
-    state:string;
+    task: string;
+    state: string;
 }

@@ -66,18 +66,20 @@ export class AppComponent {
   selectAlltasks() {
     if (this.selectAll) {
 
-      this.tasks.map(task => {
+      this.tasks = this.tasks.map(task => {
         task.state = 'complete';
+        return task;
       });
-
       this.selectAll = false;
+
     } else {
 
-      this.tasks.map(task => {
+      this.tasks = this.tasks.map(task => {
         task.state = 'progress';
+        return task;
       });
-
       this.selectAll = true;
+
     }
   }
 }
