@@ -5,14 +5,14 @@
     <div *ngIf="valor === 'default', else filter">
       <input type="checkbox" (change)="selectTask($event.target.checked, i)" [checked]="task.state==='complete'">
       {{task.task}} 
-      <button (click)="removeTask(task.task)">x</button>
+      <button (click)="removeTask(task.id)">x</button>
     </div>
 
     <ng-template  #filter>
       <div *ngIf="valor === task.state">
           <input type="checkbox" (change)="selectTask($event.target.checked, i)" [checked]="valor ==='complete'">
           {{task.task}} 
-          <button (click)="removeTask(task.task)">x</button>
+          <button (click)="removeTask(task.id)">x</button>
       </div>
     </ng-template>
 </div>
